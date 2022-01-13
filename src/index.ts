@@ -6,7 +6,7 @@ import { Collection, Intents } from "discord.js";
 import { createConnection, getRepository } from "typeorm";
 import { GuildConfiguration } from "./typeorm/entities/GuildConfiguration";
 import { io } from "socket.io-client";
-import { GuildBanLog } from "./typeorm/entities/GuildBanLog";
+import { entities } from "./typeorm/entities";
 
 const client = new DiscordClient({
   intents: [
@@ -34,7 +34,7 @@ const client = new DiscordClient({
     password: process.env.MYSQL_DB_PASSWORD,
     database: process.env.MYSQL_DB_DATABASE,
     synchronize: true,
-    entities: [GuildConfiguration, GuildBanLog],
+    entities: entities,
   });
 
   const configRepo = getRepository(GuildConfiguration);

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { getGuildBanLogs } from "../utils/api";
+import { getGuildBanLogs, getGuildModLogs } from "../utils/api";
 import { GuildContext } from "../utils/context/GuildContext";
-import { GuildBansLogType } from "../utils/types";
+import { GuildModLogType } from "../utils/types";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -25,7 +25,7 @@ export const GuildAnalyticsPage = () => {
   const { guild } = useContext(GuildContext);
   const guildId = (guild && guild.id) || "";
 
-  const [guildBanLogs, setGuildBanLogs] = useState<GuildBansLogType[]>([]);
+  const [modLogs, setModLogs] = useState<GuildModLogType[]>([]);
 
   const getLabels = () => {
     const currentDate = new Date();
@@ -34,12 +34,12 @@ export const GuildAnalyticsPage = () => {
     const labels = [];
     for (let i = start; i <= last; i++) {
       currentDate.setDate(i);
-      labels.push(`${currentDate.getMonth()} + 1/${currentDate.getDate()}`);
+      labels.push(`${currentDate.getMonth() + 1}/${currentDate.getDate()}`);
     }
     return labels;
   };
 
-  const prepareData = (data: GuildBansLogType[]) => {
+  const prepareData = (data: GuildModLogType[]) => {
     const currentDate = new Date();
     const last = currentDate.getDate();
     const start = last - 6;
@@ -57,13 +57,13 @@ export const GuildAnalyticsPage = () => {
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - 6);
     const fromDate = currentDate.toLocaleDateString();
-    console.log(fromDate);
-    getGuildBanLogs(guildId, fromDate)
+    getGuildModLogs(guildId, fromDate)
       .then(({ data }) => {
-        setGuildBanLogs(data);
+        setModLogs(data);
       })
       .catch((err) => console.log(err));
   }, []);
+
   return (
     <div style={{ width: "800px", margin: "0 auto" }}>
       <div
@@ -71,22 +71,62 @@ export const GuildAnalyticsPage = () => {
           display: "grid",
           gridTemplateColumns: "auto auto",
         }}
-      ></div>
-      <Title>Ban Analytics</Title>
-      <Line
-        data={{
-          labels: getLabels(),
-          datasets: [
-            {
-              label: "Ban Analytics",
-              data: prepareData(guildBanLogs),
-              fill: false,
-              borderColor: "rgb(75, 192, 192)",
-              tension: 0.1,
-            },
-          ],
-        }}
-      />
+      >
+        <div>
+          <Title>Ban Analytics</Title>
+          <Line
+            data={{
+              labels: getLabels(),
+              datasets: [
+                {
+                  label: "Ban Analytics",
+                  data: prepareData(
+                    modLogs.filter((log) => log.type === "ban")
+                  ),
+                  borderColor: "white",
+                  pointBorderColor: "orange",
+                },
+              ],
+            }}
+          />
+        </div>
+        <div>
+          <Title>Kick Analytics</Title>
+          <Line
+            data={{
+              labels: getLabels(),
+              datasets: [
+                {
+                  label: "Kick Analytics",
+                  data: prepareData(
+                    modLogs.filter((log) => log.type === "kick")
+                  ),
+                  borderColor: "white",
+                  pointBorderColor: "orange",
+                },
+              ],
+            }}
+          />
+        </div>
+        <div>
+          <Title>Timeout Analytics</Title>
+          <Line
+            data={{
+              labels: getLabels(),
+              datasets: [
+                {
+                  label: "Timeout Analytics",
+                  data: prepareData(
+                    modLogs.filter((log) => log.type === "timeout")
+                  ),
+                  borderColor: "white",
+                  pointBorderColor: "orange",
+                },
+              ],
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
