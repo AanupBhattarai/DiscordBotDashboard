@@ -1,10 +1,10 @@
 # Discord Dashboard
 
-I am making a discord dashboard with the help of the [tutorial](https://www.youtube.com/c/AnsontheDeveloper)
+I am making a discord dashboard with the help of the [tutorial.](https://www.youtube.com/c/AnsontheDeveloper)
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your .env file.
 
 `DISCORD_BOT_TOKEN`
 
@@ -18,25 +18,25 @@ To run this project, you will need to add the following environment variables to
 
 ## Run Locally
 
-Clone the project
+Clone the project :
 
 ```bash
   git clone https://github.com/AnupBhattaraiAce/DiscordBotDashboard
 ```
 
-Go to the DiscordBotDashboard
+Go to the DiscordBotDashboard :
 
 ```bash
   cd DiscordBotDashboard
 ```
 
-Install dependencies of discord bot
+Install dependencies of discord bot :
 
 ```bash
   npm install
 ```
 
-Start the server
+Start the server :
 
 ```bash
   npm run dev
