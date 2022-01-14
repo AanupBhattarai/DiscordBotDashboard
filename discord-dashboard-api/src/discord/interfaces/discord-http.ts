@@ -1,5 +1,9 @@
 import { AxiosResponse } from 'axios';
-import { PartialGuild, PartialGuildChannel } from 'src/utils/types';
+import {
+  GuildBanType,
+  PartialGuild,
+  PartialGuildChannel,
+} from 'src/utils/types';
 
 export interface IDiscordHttpService {
   fetchBotGuilds(): Promise<AxiosResponse<PartialGuild[]>>;
@@ -7,4 +11,6 @@ export interface IDiscordHttpService {
   fetchGuildChannels(
     guildId: string,
   ): Promise<AxiosResponse<PartialGuildChannel[]>>;
+  fetchGuildBans(guildId: string): Promise<AxiosResponse<GuildBanType[]>>;
+  deleteGuildBan(guildId: string, userId: string): Promise<AxiosResponse>;
 }

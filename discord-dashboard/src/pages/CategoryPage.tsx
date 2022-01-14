@@ -31,6 +31,9 @@ export const CategoryPage = () => {
             <TextButton onClick={() => navigate("/dashboard/analytics")}>
               Analytics
             </TextButton>
+            <TextButton onClick={() => navigate("/dashboard/bans")}>
+              Guild Bans
+            </TextButton>
           </Grid>
         </div>
         <div style={{ borderTop: "1px solid #ffffff1b", marginTop: "30px" }}>

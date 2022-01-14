@@ -6,6 +6,7 @@ import { Spinner } from "./components/Spinner";
 import { CategoryPage } from "./pages/CategoryPage";
 import { GuildAnalyticsPage } from "./pages/GuildAnalyticsPage";
 import { GuildPrefixPage } from "./pages/GuildPrefixPage";
+import { GuildBansPage } from "./pages/GuildBansPage";
 import { HomePage } from "./pages/HomePage";
 import { MenuPage } from "./pages/MenuPage";
 import { WelcomeMessagePage } from "./pages/WelcomeMessagePage";
@@ -39,6 +40,7 @@ function App() {
               path="/dashboard/analytics"
               element={<GuildAnalyticsPage />}
             />
+            <Route path="/dashboard/bans" element={<GuildBansPage />} />
           </Routes>
         </>
       ) : (
