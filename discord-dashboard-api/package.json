@@ -32,6 +32,7 @@
     "axios": "^0.24.0",
     "connect-typeorm": "^1.1.4",
     "express-session": "^1.17.2",
+    "follow-redirects": "^1.14.7",
     "mysql2": "^2.3.3",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
