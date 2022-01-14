@@ -1,8 +1,0 @@
-{
-  "packages": [
-    "discord-bot",
-    "discord-dashboard",
-    "discord-dashboard-api"
-  ],
-  "version": "0.0.0"
-}
