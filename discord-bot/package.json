@@ -4,9 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.24.0",
+    "country-flag-emoji": "^1.0.3",
     "discord.js": "^13.5.0",
     "dotenv": "^10.0.0",
     "follow-redirects": "^1.14.7",
+    "moment": "^2.29.1",
     "mysql2": "^2.3.3",
     "node-forge": "^1.2.1",
     "reflect-metadata": "^0.1.13",
