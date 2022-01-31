@@ -4,7 +4,7 @@ I am making a discord dashboard with the help of the [tutorial.](https://www.you
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file.
+To run the project, you will need to add the following environment variables to your .env file.
 
 `DISCORD_BOT_TOKEN`
 
